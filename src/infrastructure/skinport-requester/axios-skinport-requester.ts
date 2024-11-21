@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from "axios";
 import { GetItemsOutput } from "./skinport-requester.dto";
 import { ISkinportRequester } from "./skinport-requester.interface";
 
-export class SkinportRequester implements ISkinportRequester {
+export class AxiosSkinportRequester implements ISkinportRequester {
   private readonly client: AxiosInstance;
 
   constructor() {

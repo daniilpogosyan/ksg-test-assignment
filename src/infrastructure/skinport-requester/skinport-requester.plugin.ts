@@ -1,6 +1,6 @@
 import { FastifyPluginCallback } from "fastify";
 import fp from "fastify-plugin";
-import { SkinportRequester } from "./skinport-requester";
+import { AxiosSkinportRequester } from "./axios-skinport-requester";
 import { SKINPORT_REQUESTER } from "./skinport-requester.const";
 import { ISkinportRequester } from "./skinport-requester.interface";
 
@@ -13,5 +13,5 @@ declare module "fastify" {
 export const SkinportRequesterPlugin: FastifyPluginCallback = fp(function (
   fastify
 ) {
-  fastify.decorate(SKINPORT_REQUESTER, new SkinportRequester());
+  fastify.decorate(SKINPORT_REQUESTER, new AxiosSkinportRequester());
 });
