@@ -11,7 +11,7 @@ export class InMemoryCacheManager implements ICacheManager {
 
     if (
       !cached ||
-      (cached.expiresAt !== null && cached.expiresAt > Date.now())
+      (cached.expiresAt !== null && cached.expiresAt < Date.now())
     ) {
       this.clear(key);
 
