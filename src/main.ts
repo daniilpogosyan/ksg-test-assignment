@@ -8,7 +8,7 @@ import { UserModule } from "./modules/user/user.module";
 
 dotenv.config();
 
-const fastify = Fastify();
+const fastify = Fastify({ ajv: { customOptions: { coerceTypes: false } } });
 
 fastify.register(CacheManagerPlugin);
 fastify.register(PostgresPlugin);
