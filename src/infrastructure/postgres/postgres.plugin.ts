@@ -12,6 +12,6 @@ declare module "fastify" {
 export const PostgresPlugin: FastifyPluginCallback = fp(function (fastify) {
   fastify.decorate(
     POSTGRES,
-    new Postgres({ connectionString: process.env.DATABASE_URL })
+    new Postgres({ connectionString: fastify.config.DATABASE_URL })
   );
 });

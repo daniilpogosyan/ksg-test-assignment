@@ -1,15 +1,14 @@
-import dotenv from "dotenv";
 import Fastify from "fastify";
 import { CacheManagerPlugin } from "./infrastructure/cache-manager/cache-manager.plugin";
+import { ConfigPlugin } from "./infrastructure/config/config.plugin";
 import { PostgresPlugin } from "./infrastructure/postgres/postgres.plugin";
 import { SkinportRequesterPlugin } from "./infrastructure/skinport-requester/skinport-requester.plugin";
 import { ItemModule } from "./modules/item/item.module";
 import { UserModule } from "./modules/user/user.module";
 
-dotenv.config();
-
 const fastify = Fastify({ ajv: { customOptions: { coerceTypes: false } } });
 
+fastify.register(ConfigPlugin);
 fastify.register(CacheManagerPlugin);
 fastify.register(PostgresPlugin);
 fastify.register(SkinportRequesterPlugin);
