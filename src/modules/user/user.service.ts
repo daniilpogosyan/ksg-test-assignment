@@ -12,4 +12,15 @@ export class UserService {
 
     return user;
   }
+
+  async topUpBalance(userId: number, amount: number) {
+    const res = await this.pg.query<UserModel>(
+      'UPDATE "user" SET balance = balance + $1 WHERE id = $2 RETURNING *',
+      [amount, userId]
+    );
+
+    const [user] = res.rows;
+
+    return user;
+  }
 }
