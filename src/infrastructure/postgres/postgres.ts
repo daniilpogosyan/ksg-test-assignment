@@ -9,16 +9,18 @@ export class Postgres extends Pool<Client> {
     super(config);
   }
 
-  async tx(cb: (client: Client) => any) {
+  async tx<T>(cb: (client: Client) => T) {
     const client = await this.connect();
 
     try {
       try {
         await client.query("BEGIN");
         const result = await cb(client);
+        await client.query("COMMIT");
         return result;
       } catch (err) {
         await client.query("ROLLBACK");
+        throw err;
       }
     } finally {
       client.release();
