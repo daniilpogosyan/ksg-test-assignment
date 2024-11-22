@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from "axios";
-import { GetItemsOutput } from "./skinport-requester.dto";
+import { Item } from "./skinport-requester.dto";
 import { ISkinportRequester } from "./skinport-requester.interface";
 
 export class AxiosSkinportRequester implements ISkinportRequester {
@@ -11,8 +11,12 @@ export class AxiosSkinportRequester implements ISkinportRequester {
     });
   }
 
-  async getItems(): Promise<GetItemsOutput[]> {
-    const res = await this.client.get<GetItemsOutput[]>("/items");
+  async getItems(tradable?: boolean): Promise<Item[]> {
+    const res = await this.client.get<Item[]>("/items", {
+      params: {
+        ...(typeof tradable === "boolean" ? { tradable } : {}),
+      },
+    });
 
     return res.data;
   }

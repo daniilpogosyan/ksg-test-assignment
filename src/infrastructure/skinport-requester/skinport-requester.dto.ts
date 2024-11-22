@@ -17,7 +17,7 @@ export enum Currency {
   USD = "USD",
 }
 
-export type GetItemsOutput = {
+export type Item = {
   market_hash_name: string;
   currency: Currency;
   suggested_price: number;
@@ -26,6 +26,7 @@ export type GetItemsOutput = {
   min_price: number;
   max_price: number;
   mean_price: number;
+  median_price: number;
   quantity: number;
   created_at: number;
   updated_at: number;
