@@ -9,8 +9,8 @@ export const TopUpBalanceRoute: FastifyPluginCallback = function (fastify) {
           type: "object",
           required: ["userId", "amount"],
           properties: {
-            userId: { type: "integer", minimum: 0 },
-            amount: { type: "number", minimum: 0 },
+            userId: { type: "integer", exclusiveMinimum: 0 },
+            amount: { type: "number", exclusiveMinimum: 0 },
           },
         },
       },

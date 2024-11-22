@@ -9,8 +9,8 @@ export const BuyItemRoute: FastifyPluginCallback = function (fastify) {
           type: "object",
           required: ["userId", "price"],
           properties: {
-            userId: { type: "integer", minimum: 0 },
-            price: { type: "number", minimum: 0 },
+            userId: { type: "integer", exclusiveMinimum: 0 },
+            price: { type: "number", exclusiveMinimum: 0 },
           },
         },
       },
