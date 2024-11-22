@@ -10,5 +10,5 @@ declare module "fastify" {
 }
 
 export const UserServicePlugin: FastifyPluginCallback = fp(function (fastify) {
-  fastify.decorate(USER_SERVICE, new UserService());
+  fastify.decorate(USER_SERVICE, new UserService(fastify.pg));
 });
