@@ -1,8 +1,5 @@
-import dotenv from "dotenv";
 import { Client } from "pg";
 import Pool from "pg-pool";
-
-dotenv.config();
 
 export class Postgres extends Pool<Client> {
   constructor(config: Pool.Config<Client>) {
