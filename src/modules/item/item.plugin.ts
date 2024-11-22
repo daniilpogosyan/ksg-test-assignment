@@ -12,6 +12,6 @@ declare module "fastify" {
 export const ItemServicePlugin: FastifyPluginCallback = fp(function (fastify) {
   fastify.decorate(
     ITEM_SERVICE,
-    new ItemService(fastify.skinportRequester, fastify.cacheManager)
+    new ItemService(fastify.skinportRequester, fastify.cacheManager, fastify.pg)
   );
 });
