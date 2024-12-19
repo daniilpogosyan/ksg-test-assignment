@@ -6,7 +6,10 @@ import { SkinportRequesterPlugin } from "./infrastructure/skinport-requester/ski
 import { ItemModule } from "./modules/item/item.module";
 import { UserModule } from "./modules/user/user.module";
 
-const fastify = Fastify({ ajv: { customOptions: { coerceTypes: false } } });
+const fastify = Fastify({
+  ajv: { customOptions: { coerceTypes: false } },
+  logger: true,
+});
 
 fastify.register(ConfigPlugin);
 fastify.register(CacheManagerPlugin);
@@ -16,7 +19,7 @@ fastify.register(SkinportRequesterPlugin);
 fastify.register(ItemModule);
 fastify.register(UserModule);
 
-fastify.listen({ port: 3000 }, function (err, address) {
+fastify.listen({ port: 3000, host: "0.0.0.0" }, function (err, address) {
   if (err) {
     fastify.log.error(err);
   }

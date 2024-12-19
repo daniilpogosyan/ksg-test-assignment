@@ -1,0 +1,25 @@
+services:
+  api1:
+    image: api1
+    build:
+      dockerfile: ./Dockerfile.api
+    env_file:
+      - .env
+    ports:
+      - 3000:3000
+
+  api2:
+    image: api2
+    build:
+      dockerfile: ./Dockerfile.api
+    env_file:
+      - .env
+    ports:
+      - 3001:3000
+
+  nginx:
+    image: nginx
+    build:
+      dockerfile: Dockerfile.nginx
+    ports:
+      - 3100:80
