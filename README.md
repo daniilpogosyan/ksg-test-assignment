@@ -8,31 +8,33 @@
    npm i
    ```
 
-2. Run the development server:
+2. Run the migration from /migrations
+
+3. Run the development server:
 
    ```bash
    npm run dev
    ```
 
-3. Create a new user:
+4. Create a new user:
 
    ```bash
    curl -X POST http://localhost:3000/user
    ```
 
-4. Top up the balance of user with ID 1:
+5. Top up the balance of user with ID 1:
 
    ```bash
    curl -X POST http://localhost:3000/top-up-balance -d '{"userId": 1, "amount": 300}' -H "Content-Type: application/json"
    ```
 
-5. Buy an item with the price of 100 for user with ID 1:
+6. Buy an item with the price of 100 for user with ID 1:
 
    ```bash
    curl -X POST http://localhost:3000/buy-item -d '{"userId": 1, "price": 100}' -H "Content-Type: application/json"
    ```
 
-6. Get the list of available items:
+7. Get the list of available items:
    ```bash
    curl http://localhost:3000/items
    ```
