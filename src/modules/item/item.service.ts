@@ -56,7 +56,7 @@ export class ItemService {
   async buyItem(userId: number, price: number) {
     await this.pg.tx(async (client) => {
       const userResult = await client.query<UserModel>(
-        'SELECT * FROM "user" WHERE "user".id = $1',
+        'SELECT * FROM "user" WHERE "user".id = $1 FOR UPDATE',
         [userId]
       );
       const [user] = userResult.rows;
